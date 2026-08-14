@@ -38,11 +38,10 @@ func (u *User) Save() error {
 }
 
 func (u *User) ValidateCredentials() error {
-	const query = `
-	SELECT password FROM users WHERE email = ?
-	`
+	const query = "SELECT id, password FROM users WHERE email = ?"
+
 	var hashedPassword string
-	err := db.DB.QueryRow(query, u.Email).Scan(&hashedPassword)
+	err := db.DB.QueryRow(query, u.Email).Scan(&u.ID, &hashedPassword)
 	if err != nil {
 		return fmt.Errorf("Credentials invalid: %v", err)
 	}

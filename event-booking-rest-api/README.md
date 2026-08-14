@@ -23,3 +23,8 @@ $ go mod tidy
 ```
 $ go get github.com/mattn/go-sqlite3
 ```
+
+## Installing JWT
+```
+$ go get -u github.com/golang-jwt/jwt/v5
+```
