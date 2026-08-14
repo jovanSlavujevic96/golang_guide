@@ -1,6 +1,7 @@
 package models
 
 import (
+	"errors"
 	"time"
 
 	"example.com/rest-api/db"
@@ -32,6 +33,21 @@ func (e *Event) Save() error {
 	id, err := res.LastInsertId()
 	e.ID = id
 	return nil
+}
+
+func GetEventByID(id int64) (*Event, error) {
+	const query = "SELECT * FROM events WHERE ID = ?"
+	row := db.DB.QueryRow(query, id)
+	if row == nil {
+		return nil, errors.New("event not found")
+	}
+
+	var event Event
+	err := row.Scan(&event.ID, &event.Name, &event.Description, &event.Location, &event.DateTime, &event.UserID)
+	if err != nil {
+		return nil, err
+	}
+	return &event, nil
 }
 
 func GetAllEvents() ([]Event, error) {
