@@ -25,8 +25,8 @@ func (e *Event) Save() error {
 	if err != nil {
 		return err
 	}
-	res, err := stmt.Exec(e.Name, e.Description, e.Location, e.DateTime, e.UserID)
 	defer stmt.Close()
+	res, err := stmt.Exec(e.Name, e.Description, e.Location, e.DateTime, e.UserID)
 	if err != nil {
 		return err
 	}
@@ -74,4 +74,20 @@ func GetAllEvents() ([]Event, error) {
 	}
 
 	return events, nil
+}
+
+func (event *Event) Update() error {
+	const query = `
+	UPDATE events
+	SET name = ?, description = ?, location = ?, dateTime = ?
+	WHERE id = ?
+	`
+	stmt, err := db.DB.Prepare(query)
+	if err != nil {
+		return err
+	}
+	defer stmt.Close()
+
+	_, err = stmt.Exec(event.Name, event.Description, event.Location, event.DateTime, event.ID)
+	return err
 }
