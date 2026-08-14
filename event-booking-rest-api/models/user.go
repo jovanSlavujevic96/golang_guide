@@ -1,6 +1,9 @@
 package models
 
 import (
+	"errors"
+	"fmt"
+
 	"example.com/rest-api/db"
 	"example.com/rest-api/utils"
 )
@@ -31,5 +34,21 @@ func (u *User) Save() error {
 	}
 	id, err := res.LastInsertId()
 	u.ID = id
+	return nil
+}
+
+func (u *User) ValidateCredentials() error {
+	const query = `
+	SELECT password FROM users WHERE email = ?
+	`
+	var hashedPassword string
+	err := db.DB.QueryRow(query, u.Email).Scan(&hashedPassword)
+	if err != nil {
+		return fmt.Errorf("Credentials invalid: %v", err)
+	}
+	if !utils.ComparePasswords(hashedPassword, u.Password) {
+		return errors.New("Credentials invalid")
+	}
+	u.Password = hashedPassword
 	return nil
 }
