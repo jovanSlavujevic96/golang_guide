@@ -18,3 +18,8 @@ A Go-powered "Event Booking" REST API
 $ go get -u github.com/gin-gonic/gin
 $ go mod tidy
 ```
+
+## Installing SQLite
+```
+$ go get github.com/mattn/go-sqlite3
+```
