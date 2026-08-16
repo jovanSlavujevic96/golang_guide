@@ -7,6 +7,12 @@ import (
 	"example.com/rest-api/db"
 )
 
+type EventRequest struct {
+	Name        string `binding:"required"`
+	Description string `binding:"required"`
+	Location    string `binding:"required"`
+}
+
 type Event struct {
 	ID          int64
 	Name        string    `binding:"required"`
