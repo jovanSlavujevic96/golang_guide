@@ -3,17 +3,18 @@ content-type: application/json
 # Authorization: Bearer <your_jwt_token>
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20iLCJleHAiOjE3ODY4ODc0NTgsInVzZXJJZCI6Mn0.FC62Q9uaqaemAW0SF2k6SZyMzcoqCyK3l6jO-NB2s7I
 
-# {
-#     "name": "Test Event #1",
-#     "description": "First test event",
-#     "location": "A test location",
-#     // "dateTime": "2025-01-01T15:30:00.000Z"
-#     // "userId": 1
-# }
+
 {
-    "name": "Test Event #2",
-    "description": "Second test event",
-    "location": "A 2nd test location"
+    "name": "Test Event #1",
+    "description": "First test event",
+    "location": "A test location"
     // "dateTime": "2025-01-01T15:30:00.000Z"
-    // "userId": 2
+    // "userId": 1
 }
+# {
+#     "name": "Test Event #2",
+#     "description": "Second test event",
+#     "location": "A 2nd test location"
+#     // "dateTime": "2025-01-01T15:30:00.000Z"
+#     // "userId": 2
+# }

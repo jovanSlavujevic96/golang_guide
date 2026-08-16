@@ -1,0 +1,3 @@
+DELETE http://localhost:8080/events/1/register
+# Authorization: Bearer <your_jwt_token>
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20iLCJleHAiOjE3ODY4ODc0NTgsInVzZXJJZCI6Mn0.FC62Q9uaqaemAW0SF2k6SZyMzcoqCyK3l6jO-NB2s7I
